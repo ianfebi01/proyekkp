@@ -84,7 +84,7 @@
             $this->pagination->initialize($config);
 
 	        // atribut tambahan untuk setiap anchornya.
-	        $config['base_url'] = 'http://localhost/proyekkp/post/index';
+	        $config['base_url'] = 'https://proyekkp.herokuapp.com/post/index';
             if ($this->session->userdata('keyword') == false) {
             $this->session->set_userdata('keyword', '');
         }
