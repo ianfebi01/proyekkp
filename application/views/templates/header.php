@@ -35,6 +35,12 @@
                     <li class="nav-item">
                     	<a class="nav-link" href="<?=base_url();?>post/tambah">Tambah Data</a>
                     </li>
+                    <?php if (logged_in()) : ?>
+                        <a class="btn btn-outline-secondary my-2 my-sm-0 mx-3" href="<?= base_url('auth/'); ?>logout ">Logout</a>
+                    <?php else : ?>
+                        <a class="btn btn-warning my-2 my-sm-0 mx-3" href="<?= base_url('auth'); ?>">Login</a>
+                    <?php endif; ?>
+
 
                 </ul>
                 <form action="<?= base_url(); ?>post" method="POST"

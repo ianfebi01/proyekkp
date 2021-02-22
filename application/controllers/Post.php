@@ -6,11 +6,32 @@
         }
         public function tambah()
         {
-        	$data['judul'] = "Tambah Post";
+            if (logged_in()){
+                $data['judul'] = "Tambah Post";
 
-        	$this->load->view('templates/header', $data);
-        	$this->load->view('post/tambah');
-        	$this->load->view('templates/footer');
+                // $this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required');
+                // $this->form_validation->set_rules('stok', 'Stok', 'required');
+                // $this->form_validation->set_rules('harga_modal', 'Harga Modal', 'required');
+                // $this->form_validation->set_rules('harga_jual', 'Harga Jual', 'required');
+                // $this->form_validation->set_rules('total_penjualan', 'Total Penjualan', 'required');
+
+                if ($this->form_validation->run() == FALSE){
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('post/tambah');
+                    $this->load->view('templates/footer');
+                } else {
+                    $this->Post_model->tambahPost();
+                    $this->session->set_flashdata('notif', 'ditambahkan');
+                    $this->session->set_flashdata('alert', 'success');
+                    $this->session->set_flashdata('tipe', 'berhasil');
+                    redirect(base_url('post'));
+
+                }
+               
+            } else {
+                redirect('auth');
+            }
+            
         }
         public function prosesTambah(){
             

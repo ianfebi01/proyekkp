@@ -35,8 +35,11 @@
 			      <td><?=$post['total_penjualan']; ?> pcs</td>
 			      <td>Rp. <?=$post['total_modal']; ?></td>
 			      <td>Rp. <?=$post['total_untung']; ?></td>
-			      <td><a role="button" href="<?= base_url() ?>post/update/<?= $post['id_brg'] ?>" class="btn btn-dark">Update</a></td>
-			      <td><a role="button" href="<?= base_url() ?>post/hapus/<?= $post['id_brg'] ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghaous data?')">Hapus</a></td>
+			      <?php if (logged_in()): ?>
+
+				      <td><a role="button" href="<?= base_url() ?>post/update/<?= $post['id_brg'] ?>" class="btn btn-dark">Update</a></td>
+				      <td><a role="button" href="<?= base_url() ?>post/hapus/<?= $post['id_brg'] ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghaous data?')">Hapus</a></td>
+			  		<?php endif; ?>
 			    </tr>   
 			  </tbody>
 			<?php endforeach; ?>
